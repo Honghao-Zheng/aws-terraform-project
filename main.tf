@@ -11,3 +11,14 @@ module "security" {
     source             = "./modules/security"
     vpc_id = module.networking.vpc_id
 }
+
+module "app_servers" {
+  source             = "./modules/app_servers"
+  security_group_ids = [module.security.security_group_id]
+  public_subnet_ids  = module.networking.public_subnets
+
+}
+
+module "database" {
+   source             = "./modules/database"
+}
