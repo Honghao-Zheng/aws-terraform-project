@@ -1,11 +1,11 @@
 output "vpc_id" {
-    value=module.networking.vpc_id
+  value = module.networking.vpc_id
 }
 
-output "lighting_server_public_DNS" {
-  value = module.app_servers.lighting_servers.public_dns
+output "smart_home_servers_names" {
+  value = module.app_servers.smart_home_servers_names
 }
 
-output "lighting_DB_name" {
-  value = module.database.lighting_table.name
+output "servers_public_DNS" {
+  value = module.app_servers.smart_home_servers_dns
 }

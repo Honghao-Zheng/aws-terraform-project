@@ -8,17 +8,18 @@ module "networking" {
 }
 
 module "security" {
-    source             = "./modules/security"
-    vpc_id = module.networking.vpc_id
+  source = "./modules/security"
+  vpc_id = module.networking.vpc_id
 }
 
 module "app_servers" {
   source             = "./modules/app_servers"
   security_group_ids = [module.security.security_group_id]
   public_subnet_ids  = module.networking.public_subnets
+  server_names       = var.server_names
 
 }
 
 module "database" {
-   source             = "./modules/database"
+  source = "./modules/database"
 }
