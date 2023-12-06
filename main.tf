@@ -21,7 +21,8 @@ module "app_servers" {
 }
 
 module "database" {
-  source = "./modules/database"
+  source      = "./modules/database"
+  table_names = var.table_names
 }
 
 module "load_balancing" {
