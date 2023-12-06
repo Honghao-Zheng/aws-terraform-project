@@ -6,5 +6,5 @@ variable "table_names" {
 
 variable "server_names" {
   type    = list(string)
-  default = ["lighting", "heating"]
+  default = ["lighting", "heating","status"]
 }
