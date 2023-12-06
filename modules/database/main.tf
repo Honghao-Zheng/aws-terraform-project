@@ -1,15 +1,6 @@
 resource "aws_dynamodb_table" "lighting" {
-  name           = "lighting"
-  hash_key       = "id"
-  read_capacity  = 20
-  write_capacity = 20
-  attribute {
-    name = "id"
-    type = "N"
-  }
-}
-resource "aws_dynamodb_table" "heating" {
-  name           = "heating"
+  count          = length(var.table_names)
+  name           = var.table_names[count.index]
   hash_key       = "id"
   read_capacity  = 20
   write_capacity = 20
