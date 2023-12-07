@@ -11,3 +11,5 @@ resource "aws_instance" "smart_home_servers" {
     ManagedBy = "Terraform"
   }
 }
+
+
