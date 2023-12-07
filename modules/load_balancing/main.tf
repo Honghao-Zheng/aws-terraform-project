@@ -27,7 +27,7 @@ resource "aws_lb" "smart_home_servers" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.security_group_id]
-  subnets            = var.aws_subnet_public_ids
+  subnets            = var.aws_public_subnet_ids
 
 }
 
@@ -74,3 +74,26 @@ resource "aws_lb_listener_rule" "lights" {
   }
 
 }
+
+resource "aws_autoscaling_group" "smart_home_servers" {
+
+  count            = length(var.launch_templat_ids)
+  name_prefix      = "${var.service_names[count.index]}_auto_scaling"
+  desired_capacity = 1
+  max_size         = 2
+  min_size         = 1
+  launch_template {
+    id      = var.launch_templat_ids[count.index]
+    version = "$Latest"
+  }
+  vpc_zone_identifier = var.aws_public_subnet_ids
+}
+
+resource "aws_autoscaling_attachment" "smart_home_servers" {
+  count                  = length(aws_autoscaling_group.smart_home_servers)
+  autoscaling_group_name = aws_autoscaling_group.smart_home_servers[count.index].id
+  lb_target_group_arn    = aws_lb_target_group.smart_home_services[count.index].arn
+}
+
+
+
