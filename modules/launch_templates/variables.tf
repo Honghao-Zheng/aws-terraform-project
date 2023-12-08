@@ -26,6 +26,6 @@ variable "instance_ids" {
 }
 
 variable "instance_type" {
-  type = string
+  type        = string
   description = "The type of the EC2 instances"
 }

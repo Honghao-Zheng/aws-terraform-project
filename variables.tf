@@ -34,7 +34,7 @@ variable "vpc_name" {
 
 variable "cidr_range" {
   description = "The range of CIDR"
-  type = string
+  type        = string
 }
 
 variable "public_subnets" {
