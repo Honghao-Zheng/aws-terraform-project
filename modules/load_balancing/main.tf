@@ -72,16 +72,15 @@ resource "aws_lb_listener_rule" "lights" {
       values = ["/api/lights*"]
     }
   }
-
 }
 
 resource "aws_autoscaling_group" "smart_home_servers" {
 
   count            = length(var.launch_templat_ids)
   name_prefix      = "${var.service_names[count.index]}_auto_scaling"
-  desired_capacity = 1
-  max_size         = 2
-  min_size         = 1
+  desired_capacity = var.desired_capacity
+  max_size         = var.max_capacity
+  min_size         = var.min_capacity
   launch_template {
     id      = var.launch_templat_ids[count.index]
     version = "$Latest"

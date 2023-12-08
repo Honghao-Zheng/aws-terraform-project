@@ -2,3 +2,5 @@
 *.tfstate*
 *.pem
 .terraform.lock.hcl
+development.tfvars
+production.tfvars

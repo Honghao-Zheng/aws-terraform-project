@@ -1,4 +1,4 @@
-resource "aws_dynamodb_table" "lighting" {
+resource "aws_dynamodb_table" "smart_home_services" {
   count          = length(var.table_names)
   name           = var.table_names[count.index]
   hash_key       = "id"
