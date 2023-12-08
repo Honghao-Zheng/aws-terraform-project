@@ -30,5 +30,18 @@ variable "availability_zones" {
 variable "launch_templat_ids" {
   type        = list(string)
   description = "A list of launch-template ID numbers"
+}
 
+variable "desired_capacity" {
+  type        = number
+  description = "The desired number of instances running under normal traffic condition with auto scaling"
+}
+
+variable "max_capacity" {
+  type        = number
+  description = "The maximum number of instances can be scaled up to with auto scaling"
+}
+variable "min_capacity" {
+  type        = number
+  description = "The minimum number of instances must be running with auto scaling"
 }

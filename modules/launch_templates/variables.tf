@@ -24,3 +24,8 @@ variable "instance_ids" {
   description = "List of IDs of instances"
   type        = list(string)
 }
+
+variable "instance_type" {
+  type = string
+  description = "The type of the EC2 instances"
+}

@@ -8,7 +8,7 @@ resource "aws_launch_template" "smart_home_servers" {
   name        = var.service_names[count.index]
   image_id                             = aws_ami_from_instance.smart_home_servers[count.index].id
   instance_initiated_shutdown_behavior = "terminate"
-  instance_type                        = "t2.micro"
+  instance_type                        = var.instance_type
   key_name                             = var.ssh_key_name
   vpc_security_group_ids               = var.security_group_ids
 }

@@ -19,3 +19,13 @@ variable "ssh_key_name" {
   default = "tf-key"
   sensitive = true
 }
+
+variable "ami" {
+  type = string
+  description = "The AMI name for the instances"
+}
+
+variable "instance_type" {
+  type = string
+  description = "The type of the EC2 instances"
+}
