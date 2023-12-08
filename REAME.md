@@ -58,6 +58,8 @@ This module deploys application servers within specified subnets and security gr
 
 **Outputs:**
 - `instance_ids`: List of IDs for the created EC2 instances.
+- `smart_home_servers_names`: List of names of smart home servers.
+- `smart_home_servers_dns`: List of public DNS of smart home servers.
 
 ### 4. Database Module
 
